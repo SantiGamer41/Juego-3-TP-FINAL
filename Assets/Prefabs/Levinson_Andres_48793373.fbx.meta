@@ -30,7 +30,27 @@ ModelImporter:
     4300004: Cube.002
     4300006: Cube.003
     2186277476908879412: ImportLogs
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 2b7d966e2341f5241ba0f27bcefe7c76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: b9d6c93fc1aec7544b8e541c5a417977, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 405392338143657499fc810ae373de6e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.005
+    second: {fileID: 2100000, guid: 8f7ddc256f86e904ca4b946e8133642a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
