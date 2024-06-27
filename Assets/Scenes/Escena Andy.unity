@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -224,7 +224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5b25e0dd143c84d45a0274f313024c2f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5b25e0dd143c84d45a0274f313024c2f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2016,8 +2016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newPosition: {x: 0, y: 4, z: 0}
-  comidaRandom: 0
-  index: -1
+  index: 0
   comida:
   - {fileID: 1856964413}
   - {fileID: 1465227804}
@@ -2033,6 +2032,8 @@ MonoBehaviour:
   - {fileID: 1530022742}
   - {fileID: 153731316}
   - {fileID: 577702145}
+  comidaRandom: 0
+  maxApariciones: 0
   interval: 1
 --- !u!4 &1457813055
 Transform:
