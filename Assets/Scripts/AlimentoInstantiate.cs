@@ -18,15 +18,23 @@ public class AlimentoInstantiate : MonoBehaviour
     //Chequeo de comidas
     public InputField ingresoComida;
     public Button btnResponder;
-
+    public GameObject panelCorrecto;
+    public GameObject panelIncorrecto;
+    public GameObject panelGeneral;
+    public Button btnCorrecto;
+    public Button btnIncorrecto;
     // Start is called before the first frame update
     void Start()
     {
+
         deactivateAll();
+        panelGeneral.SetActive(false);
         comidaRandom = Random.Range(0, comida.Length-1);
         maxApariciones = Random.Range(3, 10);
         InvokeRepeating(nameof(aparecerComida), 0, interval);
         btnResponder.onClick.AddListener(Responder);
+        btnCorrecto.onClick.AddListener(ReiniciarConValoresAleatorios);
+        btnIncorrecto.onClick.AddListener(ReiniciarConMismosValores);
 
     }
     
@@ -68,6 +76,7 @@ public class AlimentoInstantiate : MonoBehaviour
         else
         {
             CancelInvoke(nameof(aparecerComida));
+            panelGeneral.SetActive(true);
         }
 
 
@@ -86,13 +95,37 @@ public class AlimentoInstantiate : MonoBehaviour
 
             if (numeroIngresado == maxApariciones)
             {
-                Debug.Log("¡Correcto! El número ingresado es igual a maxApariciones.");
-                // Aquí puedes ejecutar cualquier acción adicional que desees
+                panelCorrecto.SetActive(true);
             }
             else
             {
-                Debug.Log("El número ingresado no es igual a maxApariciones.");
+                panelIncorrecto.SetActive(true);
             }
         }
     }
+    void ReiniciarConValoresAleatorios()
+    {
+        panelGeneral.SetActive(false);
+        panelCorrecto.SetActive(false);
+        panelIncorrecto.SetActive(false);
+
+       
+        comidaRandom = Random.Range(0, comida.Length);
+        maxApariciones = Random.Range(3, 10);
+        index = 0;
+
+       
+        InvokeRepeating(nameof(aparecerComida), 0, interval);
+    }
+    void ReiniciarConMismosValores()
+    {
+        panelGeneral.SetActive(false);
+        panelCorrecto.SetActive(false);
+        panelIncorrecto.SetActive(false);
+
+        
+        index = 0;
+        InvokeRepeating(nameof(aparecerComida), 0, interval);
+    }
 }
+
