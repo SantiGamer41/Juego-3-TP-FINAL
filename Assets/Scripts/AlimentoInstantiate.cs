@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AlimentoInstantiate : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class AlimentoInstantiate : MonoBehaviour
     public int comidaRandom;
     public int maxApariciones;
     //Chequeo de comidas
-    GameObject[] comidasEnPlano;
+    public InputField ingresoComida;
+    public Button btnResponder;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +26,8 @@ public class AlimentoInstantiate : MonoBehaviour
         comidaRandom = Random.Range(0, comida.Length-1);
         maxApariciones = Random.Range(3, 10);
         InvokeRepeating(nameof(aparecerComida), 0, interval);
-        
+        btnResponder.onClick.AddListener(Responder);
+
     }
     
     public float interval;
@@ -69,5 +72,27 @@ public class AlimentoInstantiate : MonoBehaviour
 
 
 
+    }
+    void Responder()
+    {
+        if (ingresoComida != null)
+        {
+            
+            string textoIngresado = ingresoComida.text;
+
+            // Intentar convertir el texto a un número
+            int numeroIngresado = int.Parse(textoIngresado);
+            
+
+            if (numeroIngresado == maxApariciones)
+            {
+                Debug.Log("¡Correcto! El número ingresado es igual a maxApariciones.");
+                // Aquí puedes ejecutar cualquier acción adicional que desees
+            }
+            else
+            {
+                Debug.Log("El número ingresado no es igual a maxApariciones.");
+            }
+        }
     }
 }
