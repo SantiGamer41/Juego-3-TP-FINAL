@@ -2039,6 +2039,8 @@ MonoBehaviour:
   panelCorrecto: {fileID: 2117285389}
   panelIncorrecto: {fileID: 326044554}
   panelGeneral: {fileID: 1359674334}
+  panelRespuestaVacia: {fileID: 927888162}
+  btnRespVacia: {fileID: 1773358837}
   btnCorrecto: {fileID: 695583777}
   btnIncorrecto: {fileID: 1379317506}
   interval: 1

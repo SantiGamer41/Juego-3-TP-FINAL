@@ -9,7 +9,7 @@ public class AlimentoInstantiate : MonoBehaviour
     public Vector3 newPosition;
 
     //Declaración del Array
-    
+
     public int index = 1;
     public GameObject[] comida;
     //declaración de que comida se usa y cuantas veces aparecen
@@ -21,6 +21,8 @@ public class AlimentoInstantiate : MonoBehaviour
     public GameObject panelCorrecto;
     public GameObject panelIncorrecto;
     public GameObject panelGeneral;
+    public GameObject panelRespuestaVacia;
+    public Button btnRespVacia;
     public Button btnCorrecto;
     public Button btnIncorrecto;
     // Start is called before the first frame update
@@ -29,15 +31,15 @@ public class AlimentoInstantiate : MonoBehaviour
 
         deactivateAll();
         panelGeneral.SetActive(false);
-        comidaRandom = Random.Range(0, comida.Length-1);
+        comidaRandom = Random.Range(0, comida.Length - 1);
         maxApariciones = Random.Range(3, 10);
         InvokeRepeating(nameof(aparecerComida), 0, interval);
         btnResponder.onClick.AddListener(Responder);
         btnCorrecto.onClick.AddListener(ReiniciarConValoresAleatorios);
         btnIncorrecto.onClick.AddListener(ReiniciarConMismosValores);
-
+        btnIncorrecto.onClick.AddListener(CerrarPanelVacio);
     }
-    
+
     public float interval;
 
     // Update is called once per frame
@@ -57,16 +59,16 @@ public class AlimentoInstantiate : MonoBehaviour
     }
     void Activate()
     {
-       
-        
-            comida[comidaRandom].SetActive(true);
-        
+
+
+        comida[comidaRandom].SetActive(true);
+
     }
     void aparecerComida()
     {
 
 
-        
+
         if (index < maxApariciones)
         {
             Activate();
@@ -86,22 +88,27 @@ public class AlimentoInstantiate : MonoBehaviour
     {
         if (ingresoComida != null)
         {
-            
+
             string textoIngresado = ingresoComida.text;
 
             // Intentar convertir el texto a un número
             int numeroIngresado = int.Parse(textoIngresado);
-            
+
 
             if (numeroIngresado == maxApariciones)
             {
                 panelCorrecto.SetActive(true);
             }
-            else
+            else if (numeroIngresado != maxApariciones)
             {
                 panelIncorrecto.SetActive(true);
             }
+            else if (ingresoComida.text == null)
+            {
+                panelRespuestaVacia.SetActive(true);
+            }
         }
+        
     }
     void ReiniciarConValoresAleatorios()
     {
@@ -109,12 +116,12 @@ public class AlimentoInstantiate : MonoBehaviour
         panelCorrecto.SetActive(false);
         panelIncorrecto.SetActive(false);
 
-       
+
         comidaRandom = Random.Range(0, comida.Length);
         maxApariciones = Random.Range(3, 10);
         index = 0;
 
-       
+
         InvokeRepeating(nameof(aparecerComida), 0, interval);
     }
     void ReiniciarConMismosValores()
@@ -123,9 +130,13 @@ public class AlimentoInstantiate : MonoBehaviour
         panelCorrecto.SetActive(false);
         panelIncorrecto.SetActive(false);
 
-        
+
         index = 0;
         InvokeRepeating(nameof(aparecerComida), 0, interval);
+    }
+    void CerrarPanelVacio()
+    {
+        panelRespuestaVacia.SetActive(false);
     }
 }
 
