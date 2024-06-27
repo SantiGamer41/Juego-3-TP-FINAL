@@ -4,21 +4,35 @@ using UnityEngine;
 
 public class AlimentoInstantiate : MonoBehaviour
 {
+    //
+    public Vector3 newPosition;
+
+    //Declaración del Array
+    public int comidaRandom;
     public int index = -1;
     public GameObject[] comida;
-    public GameObject[] comidasEnPlano;
-    
+
+    //Chequeo de comidas
+    GameObject[] comidasEnPlano;
+
     // Start is called before the first frame update
     void Start()
     {
         deactivateAll();
-       
+        comidaRandom = Random.Range(0, comida.Length-1);
+        InvokeRepeating(nameof(aparecerComida), 0, interval);
+        
     }
+    
+    public float interval;
 
     // Update is called once per frame
     void Update()
     {
-        
+        //if ()
+        //{
+        //    aparecerComida();
+        //}
     }
     void deactivateAll()
     {
@@ -27,11 +41,19 @@ public class AlimentoInstantiate : MonoBehaviour
             comida[i].SetActive(false);
         }
     }
+    void Activate()
+    {
+       
+        
+            comida[comidaRandom].SetActive(true);
+        
+    }
     void aparecerComida()
     {
-        for (int i = Random.Range(0, comida.Length - 1); i < comida.Length - 1; i = Random.Range(0, comida.Length - 1))
-        {
-            // comida[i]
-        }
+       
+        
+            Activate();
+            Instantiate(comida[comidaRandom], newPosition, Quaternion.identity);
+        
     }
 }
